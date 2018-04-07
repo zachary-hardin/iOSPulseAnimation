@@ -1,0 +1,16 @@
+PODS:
+  - Pulsator (0.5.1)
+
+DEPENDENCIES:
+  - Pulsator
+
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - Pulsator
+
+SPEC CHECKSUMS:
+  Pulsator: f465ca37212d826523fe8c79b07c1a4c1a941f5e
+
+PODFILE CHECKSUM: fcd97035b09e3884313e020eafff98bb4cc4f9b0
+
+COCOAPODS: 1.5.0
