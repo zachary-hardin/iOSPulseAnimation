@@ -28,6 +28,7 @@ class ViewController: UIViewController {
             setButtonTitle("SEARCHING...")
             
             setUpPulser()
+            heartImageView.layer.transform = CATransform3DIdentity
             animateHeart()
             
             pulsator.start()
