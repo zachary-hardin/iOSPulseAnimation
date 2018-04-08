@@ -4,6 +4,7 @@ This is a simple design concept of how you can inform users that your app is sea
 # Requirements
 * Install CocoaPods
 * Install Pulsator
+  * https://github.com/shu223/Pulsator
 
 # Tutorials:
 https://medium.com/@shu223/display-pulse-animations-with-3-lines-on-ios-4de057647936
