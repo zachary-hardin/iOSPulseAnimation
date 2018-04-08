@@ -18,18 +18,21 @@ class ViewController: UIViewController {
     
     @IBAction func togglePulse(_ sender: Any) {
         if buttonSelected {
-            setButtonTitle("START")
+            setButtonTitle("LOCATE DEVICE")
             
-            pulsator.numPulse = 0
-            pulsator.speed = 0.007
+            pulsator.numPulse = 1
+            heartImageView.layer.removeAllAnimations()
+            
             pulsator.stop()
         } else {
-            setButtonTitle("STOP")
-            pulsator.start()
+            setButtonTitle("SEARCHING...")
             
-            setPulserSpeed()
-            setPulserNumber()
+            setUpPulser()
+            animateHeart()
+            
+            pulsator.start()
         }
+        
         buttonSelected = !buttonSelected
     }
     
@@ -46,45 +49,30 @@ class ViewController: UIViewController {
         setPulserPosition()
     }
     
-    fileprivate func setUpButton() {
-        togglePulseButton.setTitle("START", for: .normal)
+    func setUpButton() {
+        togglePulseButton.setTitle("LOCATE DEVICE", for: .normal)
         togglePulseButton.layer.cornerRadius = 10
         togglePulseButton.clipsToBounds = true
     }
     
-    fileprivate func setUpPulser() {
-        setPulserColor()
-        setPulserRadius()
-        setPulserSpeed()
-        setPulserNumber()
-    }
-    
-    fileprivate func setPulserNumber() {
+    func setUpPulser() {
+        pulsator.backgroundColor = UIColor.red.cgColor
+        pulsator.radius = CGFloat(500)
+        pulsator.speed = 0.5
         pulsator.numPulse = 8
     }
     
-    fileprivate func setPulserSpeed() {
-        pulsator.speed = 0.5
-    }
-    
-    fileprivate func setPulserPosition() {
+    func setPulserPosition() {
         pulsator.position = heartImageView.layer.position
     }
     
-    fileprivate func setPulserColor() {
-        pulsator.backgroundColor = UIColor(
-            red: CGFloat(255),
-            green: CGFloat(0),
-            blue: CGFloat(0),
-            alpha: CGFloat(1)
-            ).cgColor
-    }
-    
-    fileprivate func setPulserRadius() {
-        pulsator.radius = CGFloat(500)
-    }
-    
-    fileprivate func setButtonTitle(_ text: String) {
+    func setButtonTitle(_ text: String) {
         togglePulseButton.setTitle(text, for: .normal)
+    }
+    
+    func animateHeart() {
+        UIView.animate(withDuration: 0.3, delay: 0.3, options: [.repeat, .autoreverse], animations: {
+            self.heartImageView.transform = CGAffineTransform(scaleX: 1.04, y: 1.04)
+        })
     }
 }
